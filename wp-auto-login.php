@@ -86,8 +86,6 @@ class WP_Auto_Login {
 	 */
 	public function includes() {
 
-		include_once 'includes/class-wp-auto-login-set-current-user.php';
-
 		foreach ( glob( WP_AUTO_LOGIN_PLUGIN_DIR . '/includes/*.php' ) as $file )
 			include_once $file;
 	}
