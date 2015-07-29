@@ -97,7 +97,8 @@ class WP_Auto_Login {
 
 	/**
 	 *	Display a message to the user after plugin activation
-	 *	@param $plugin Plugin basename
+	 *
+	 *	@param string $plugin Plugin basename
 	 */
 	public function usage_warning( $plugin, $network_activation ) {
 
@@ -116,7 +117,6 @@ endif;
 /**
  *	Main function
  *
- *	@since 1.0
  *	@return object WP_Auto_Login instance
  */
 function WP_Auto_Login() {

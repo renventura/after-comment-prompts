@@ -11,7 +11,7 @@ class WP_Auto_Login_Settings {
 	public $settings;
 
 	/**
-	 * Class constructor
+	 *	Class constructor
 	 */
 	public function __construct() {
 
@@ -19,7 +19,7 @@ class WP_Auto_Login_Settings {
 	}
 
 	/**
-	 * Add new fields to wp-admin/options-general.php page
+	 *	Add new fields to wp-admin/options-general.php page
 	 */
 	public function register_fields() {
 
@@ -30,7 +30,7 @@ class WP_Auto_Login_Settings {
 			'password' => 'wp_auto_login_password',
 		);
 
-		register_setting( 'general', 'wp_auto_login' );
+		register_setting( 'general', 'wp_auto_login', array( $this, 'sanitize' ) );
 
 		add_settings_section( 'wp-auto-login-section', 'WP Auto Login Creds', array( $this, 'settings_section_callback' ), 'general' );
 
@@ -51,12 +51,30 @@ class WP_Auto_Login_Settings {
 	}
 
 	/**
-	 * HTML for settings fields
+	 *	HTML for settings fields
+	 *
+	 *	@param array $args Data passed from add_settings_field()
 	 */
 	public function render_setting_input( $args ) {
 
 		foreach( $args as $key => $value )
 			printf( '<p><input type="text" id="wp_auto_login_%1$s" name="wp_auto_login[%1$s]" value="%2$s" /></p>', $key, esc_attr( $this->settings[$key] ) );
+	}
+
+	/**
+	 *	Sanitize the input
+	 *
+	 *	@param array $input Settings
+	 *	@return array $new_input Sanitized input
+	 */
+	public function sanitize( $input ) {
+
+		$new_input = array();
+
+		foreach ( $input as $key => $val )
+			$new_input[ $key ] = ( isset( $input[ $key ] ) ) ? sanitize_text_field( $val ) : '';
+
+		return $new_input;
 	}
 }
 
