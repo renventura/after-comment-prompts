@@ -1,31 +1,20 @@
-=== WP Auto Login ===
+# WP Auto Login
 
-Contributors: EngageWP
-Tags: Login
-Tested up to: 4.2.3
-Stable tag: 1.0
-License: GPL 2.0+
-License URI: http://www.opensource.org/licenses/gpl-license.php
-Donate link: http://www.engagewp.com/donate/
-
-Bypass login forms and automatically sign into any account.
-
-== Description ==
 This plugin was created for quick login when working locally. In the settings, you add the username and password for any account (i.e. "admin" and "admin"). By visiting /wp-admin/?wp_auto_login=true, you will be automatically logged into the account owning the credentials you set.
 
-== Installation ==
+## Installation ##
 
-= Install Automatically =
+__Automatically__
 
 1. Search for WP Auto Login in the Add New Plugin section of the WordPress admin
 2. Install & Activate
 
-= Install Manually =
+__Manually__
 
 1. Download the zip file, unzip it and upload plugin folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
 *How do I use this plugin?*
 
@@ -37,11 +26,10 @@ To automatically log in, visit your local site's /wp-admin/?wp_auto_login=true a
 
 Again, DO NOT USE THIS PLUGIN ON LIVE WEBSITES.
 
-== Screenshots ==
+## Bugs ##
+If you find an issue, let me know!
 
-None
+## Changelog ##
 
-== Changelog ==
-
-= 1.0 =
+__1.0__
 * Initial version
