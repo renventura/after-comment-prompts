@@ -24,7 +24,7 @@ Once installed and activated, the plugin adds its settings to the General settin
 
 To automatically log in, visit your local site's /wp-admin/?wp_auto_login=true and the plugin will do the rest.
 
-Again, DO NOT USE THIS PLUGIN ON LIVE WEBSITES.
+Again, __DO NOT USE THIS PLUGIN ON LIVE WEBSITES__!
 
 ## Bugs ##
 If you find an issue, let me know!
