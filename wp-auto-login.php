@@ -40,32 +40,21 @@ if ( ! class_exists( 'WP_Auto_Login' ) ) :
 
 class WP_Auto_Login {
 
-	/**
-	 *	@since 1.0
-	 */
-	private static $instance;
+	private $set_user, $settings;
 
-	private static $signon;
+	public function __construct() {
 
-	public static $settings;
+		$this->constants();
+		$this->includes();
+		$this->hooks();
 
-	public static function instance() {
-
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof WP_Auto_Login ) ) {
-
-			self::$instance = new WP_Auto_Login;
-
-			self::$instance->constants();
-			self::$instance->includes();
-			self::$instance->hooks();
-
-			self::$signon = new WP_Auto_Login_Set_Current_User;
-			self::$settings = new WP_Auto_Login_Settings;
-		}
-
-		return self::$instance;
+		$this->set_user = new WP_Auto_Login_Set_Current_User;
+		$this->settings = new WP_Auto_Login_Settings;
 	}
 
+	/**
+	 *	Define plugin constants
+	 */
 	public function constants() {
 
 		if ( ! defined( 'WP_AUTO_LOGIN_PLUGIN_DIR' ) )
@@ -103,14 +92,14 @@ class WP_Auto_Login {
 	 */
 	public function plugin_activate() {
 
-		add_action( 'activated_plugin', array( $this, 'useage_warning' ), 10, 2 );
+		add_action( 'activated_plugin', array( $this, 'usage_warning' ), 10, 2 );
 	}
 
 	/**
 	 *	Display a message to the user after plugin activation
 	 *	@param $plugin Plugin basename
 	 */
-	public function useage_warning( $plugin, $network_activation ) {
+	public function usage_warning( $plugin, $network_activation ) {
 
 		if ( $plugin !== plugin_basename( WP_AUTO_LOGIN_PLUGIN_FILE ) ) return;
 
@@ -131,7 +120,7 @@ endif;
  *	@return object WP_Auto_Login instance
  */
 function WP_Auto_Login() {
-	return WP_Auto_Login::instance();
+	return new WP_Auto_Login;
 }
 
 //* Start the engine

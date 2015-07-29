@@ -25,13 +25,21 @@ class WP_Auto_Login_Settings {
 
 		$this->settings = get_option( 'wp_auto_login' );
 
-		$settings = array( 'wp_auto_login_username', 'wp_auto_login_password' );
+		$settings = array(
+			'username' => 'wp_auto_login_username',
+			'password' => 'wp_auto_login_password',
+		);
 
 		register_setting( 'general', 'wp_auto_login' );
 
 		add_settings_section( 'wp-auto-login-section', 'WP Auto Login Creds', array( $this, 'settings_section_callback' ), 'general' );
-		add_settings_field( 'wp-auto-login-username', 'Username', array( $this, 'username_callback' ), 'general', 'wp-auto-login-section' );
-		add_settings_field( 'wp-auto-login-password', 'Password', array( $this, 'password_callback' ), 'general', 'wp-auto-login-section' );
+
+		foreach( $settings as $key => $setting ) {
+
+			add_settings_field( $setting, ucwords( $key ), array( $this, 'render_setting_input' ), 'general', 'wp-auto-login-section', array(
+				$key => $setting
+			) );
+		}
 	}
 
 	/**
@@ -39,27 +47,16 @@ class WP_Auto_Login_Settings {
 	 */
 	public function settings_section_callback() {
 
-		echo 'This is the WP Auto Login Settings section';
+		printf( '<p>%s<br/><strong>%s</strong></p>', __( 'Add the username and password for the account you want to be signed into. To log in automatically, navigate to:' ), get_admin_url( null, '/?wp_auto_login=true' ) );
 	}
 
 	/**
-	 * HTML for username field
+	 * HTML for settings fields
 	 */
-	public function username_callback() {
+	public function render_setting_input( $args ) {
 
-		$username = esc_attr( $this->settings['username'] );
-
-		printf( '<p><input type="text" id="wp_auto_login_username" name="wp_auto_login[username]" value="%s" /></p>', $username );
-	}
-
-	/**
-	 * HTML for password field
-	 */
-	public function password_callback() {
-
-		$password = esc_attr( $this->settings['password'] );
-
-		printf( '<p><input type="text" id="wp_auto_login_password" name="wp_auto_login[password]" value="%s" /></p>', $password );
+		foreach( $args as $key => $value )
+			printf( '<p><input type="text" id="wp_auto_login_%1$s" name="wp_auto_login[%1$s]" value="%2$s" /></p>', $key, esc_attr( $this->settings[$key] ) );
 	}
 }
 
