@@ -1,0 +1,13 @@
+.popupoverlay-close {
+	color: #DF0101;
+	cursor: pointer;
+	float: right;
+	margin: 10px 20px;
+}
+
+.comment-prompt-modal-wrap {
+	background: #fff;
+	max-width: 400px;
+	padding: 50px 50px 30px;
+	text-align: center;
+}

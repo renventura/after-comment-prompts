@@ -1,4 +1,4 @@
-=== WP Auto Login ===
+=== Comment Prompt ===
 
 Contributors: EngageWP
 Tags: Login
@@ -8,16 +8,16 @@ License: GPL 2.0+
 License URI: http://www.opensource.org/licenses/gpl-license.php
 Donate link: http://www.engagewp.com/donate/
 
-Bypass login forms and automatically sign into any account.
+Display a modal message/prompt to a user after they leave a post comment.
 
 == Description ==
-This plugin was created for quick login when working locally. In the settings, you add the username and password for any account (i.e. "admin" and "admin"). By visiting /wp-admin/?wp_auto_login=true, you will be automatically logged into the account owning the credentials you set.
+
 
 == Installation ==
 
 = Install Automatically =
 
-1. Search for WP Auto Login in the Add New Plugin section of the WordPress admin
+1. Search for Comment Prompt in the Add New Plugin section of the WordPress admin
 2. Install & Activate
 
 = Install Manually =
@@ -29,17 +29,11 @@ This plugin was created for quick login when working locally. In the settings, y
 
 <em>How do I use this plugin?</em>
 
-First, I highly discourage you from using this plugin on a live/production environment because it creates obvious security problems (anyone can sign into an admin account). Therefore, you should only use this plugin to skip the login process on local environments.
 
-Once installed and activated, the plugin adds its settings to the General settings page. To use the plugin, simply choose an account to sign into and enter the username and password. For example, on my local sites, I use "admin" for the username and password. Therefore, I'd enter "admin" into these fields and save.
-
-To automatically log in, visit your local site's /wp-admin/?wp_auto_login=true and the plugin will do the rest.
-
-Again, DO NOT USE THIS PLUGIN ON LIVE WEBSITES.
 
 == Screenshots ==
 
-None
+None yet
 
 == Changelog ==
 

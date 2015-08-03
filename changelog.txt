@@ -1,4 +1,4 @@
-WP Auto Login Change Log
+Comment Prompt Change Log
 
-July 28, 2015 - version 1.0
+August 3, 2015 - version 1.0
 * Initial version
