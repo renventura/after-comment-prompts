@@ -73,7 +73,7 @@ class After_Comment_Prompts {
 	}
 
 	/**
-	 *	Include all PHP files
+	 *	Include PHP files
 	 */
 	public function includes() {
 
@@ -89,21 +89,11 @@ class After_Comment_Prompts {
 	 */
 	public function hooks() {
 
-		// register_activation_hook( AFTER_COMMENT_PROMPTS_PLUGIN_FILE, array( $this, 'plugin_activate' ) );
-
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueues' ) );
 
 		add_action( 'wp_footer', array( $this, 'add_prompt_content' ) );
 
 		add_filter( 'comment_post_redirect', array( $this, 'comment_post_redirect' ), 10, 2 );
-	}
-
-	/**
-	 *	Make sure users know what they're getting into
-	 */
-	public function plugin_activate() {
-
-		//
 	}
 
 	/**
@@ -120,7 +110,7 @@ class After_Comment_Prompts {
 	}
 
 	/**
-	 *	Add the content for the prompt
+	 *	Add the content for the prompt modal
 	 */
 	public function add_prompt_content() {
 
@@ -140,12 +130,13 @@ class After_Comment_Prompts {
 		$author_names = explode( ' ', $comment->comment_author );
 		$author_fname = $author_names[0];
 
-		// Message
+		// Message setting value
 		$message = after_comment_prompts_get_settings()['message'];
 
-		// Replace merger tags
+		// Replace merge tags
 		$message = str_replace( '{commenter_name}', $author_fname, $message );
 
+		// Final output
 		$output = after_comment_prompts_get_modal( $message );
 
 		echo apply_filters( 'after_comment_prompts_modal_output_comments', $output, $comment, $message );

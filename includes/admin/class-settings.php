@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for adding a new field to the options-general.php page
+ *	Add new settings fields to the options-general.php page
  */
 
 if ( ! class_exists( 'After_Comment_Prompts_Settings' ) ) :
@@ -38,22 +38,21 @@ class After_Comment_Prompts_Settings {
 
 	/**
 	 *	The settings to register
+	 *
+	 *	@return array $settings Settings to register in the admin
 	 */
 	public function settings() {
 
+		// Directions for the message setting
 		$merge_tags = array(
 			'{commenter_name}' => __( 'The name of the comment author;' ),
 		);
-
 		$message_directions = sprintf( __( 'The following merge tags can be used in your message:' ) );
-
 		$message_directions .= '<ul>';
-
 		foreach ( $merge_tags as $key => $val ) {
 
 			$message_directions .= sprintf( '<li><strong>%s</strong> - %s</li>', $key, $val );
 		}
-
 		$message_directions .= '</ul>';
 
 		//* Plugin options/settings

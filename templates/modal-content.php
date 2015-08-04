@@ -1,7 +1,7 @@
 <?php 
 	
 /**
- *	Modal HTML markup
+ *	Default HTML markup for modals
  */
 
 ?>

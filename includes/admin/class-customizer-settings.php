@@ -1,7 +1,7 @@
 <?php
 
 /**
- *	Add style settings to the Customizer
+ *	Add style settings to the WordPress Customizer
  */
 
 if ( ! class_exists( 'After_Comment_Prompts_Customizer_Settings' ) ):
@@ -13,6 +13,11 @@ class After_Comment_Prompts_Customizer_Settings {
 		add_action( 'customize_register', array( $this, 'register_customizer_fields' ) );
 	}
 
+	/**
+	 *	Define the Customizer settings
+	 *
+	 *	@return array $settings The Customizer settings
+	 */
 	public function customizer_settings() {
 
 		$settings = array(
@@ -88,7 +93,7 @@ class After_Comment_Prompts_Customizer_Settings {
 	}
 
 	/**
-	 *	Add customizer controls for modal
+	 *	Add customizer controls for the modal
 	 */
 	public function register_customizer_fields( $wp_customize ) {
 
@@ -124,6 +129,7 @@ class After_Comment_Prompts_Customizer_Settings {
 
 					switch ( $field['type'] ) {
 
+						// Color picker
 						case 'color':
 							$wp_customize->add_setting( $field['key'], array(
 								'default' => $field['default'] ? $field['default'] : '',
@@ -136,6 +142,7 @@ class After_Comment_Prompts_Customizer_Settings {
 							) ) );
 							break;
 
+						// Text field restricted to numbers
 						case 'number':
 							$wp_customize->add_setting( $field['key'], array(
 								'default' => $field['default'] ? $field['default'] : '',
@@ -150,7 +157,6 @@ class After_Comment_Prompts_Customizer_Settings {
 							break;
 						
 						default:
-							# code...
 							break;
 					}
 

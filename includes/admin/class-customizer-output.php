@@ -2,8 +2,8 @@
 
 /**
  *	Generate modal styling based on customizer settings
+ *	Since not much CSS is generated, add it to the head
  */
-
 add_action( 'wp_head', 'after_comment_prompts_customizer_output' );
 function after_comment_prompts_customizer_output() { ?>
 <style>

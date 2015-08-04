@@ -7,12 +7,18 @@
 /**
  *	Get plugin settings array
  *
- *	Example: wp_auto_login_get_settings()['username'];
+ *	@example wp_auto_login_get_settings()['username'];
+ *	@return array Option storing an array of the plugin's settings
  */
 function after_comment_prompts_get_settings() {
 	return get_option( 'after_comment_prompts' );
 }
 
+/**
+ *	Check to see if plugin's functionality is enabled from the Enable setting
+ *
+ *	@return boolean True if setting is enabled, false otherwise
+ */
 function after_comment_prompts_is_enabled() {
 
 	$option = after_comment_prompts_get_settings();
@@ -23,6 +29,11 @@ function after_comment_prompts_is_enabled() {
 	return false;
 }
 
+/**
+ *	Check to see if comment prompts are hidden for logged-in users
+ *
+ *	@return boolean True if setting is enabled, false otherwise
+ */
 function after_comment_prompts_is_hidden_for_logged_in() {
 
 	$option = after_comment_prompts_get_settings();
@@ -33,6 +44,11 @@ function after_comment_prompts_is_hidden_for_logged_in() {
 	return false;
 }
 
+/**
+ *	Get the default markup for modals
+ *
+ *	@return string $output Default markup
+ */
 function after_comment_prompts_get_modal( $message = null ) {
 
 	ob_start();

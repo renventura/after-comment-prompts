@@ -1,5 +1,9 @@
 <?php
 
+/**
+ *	Create plugin settings
+ */
+
 if ( ! class_exists( 'RV_Settings_Inputs' ) ):
 
 class RV_Settings_Inputs {
