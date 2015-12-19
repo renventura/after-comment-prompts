@@ -1,7 +1,9 @@
 <?php
-
 /**
  *	Create plugin settings
+ *
+ *	@package After Comment Prompts
+ *	@author Ren Ventura
  */
 
 if ( ! class_exists( 'RV_Settings_Inputs' ) ):
@@ -16,10 +18,11 @@ class RV_Settings_Inputs {
 	 */
 	public function input_html( $setting, $option ) {
 
-		if ( isset( $option[$setting['key']] ) )
+		if ( isset( $option[$setting['key']] ) ) {
 			$default_value = $option[$setting['key']];
-
-		else $default_value = '';
+		} else {
+			$default_value = '';
+		}
 
 		$settings = array(
 			'textarea_name' => AFTER_COMMENT_PROMPTS_SETTING_PREFIX_NO_UNDERSCORE . '[' . $setting['key'] . ']',
@@ -33,8 +36,9 @@ class RV_Settings_Inputs {
 
 		wp_editor( $default_value, AFTER_COMMENT_PROMPTS_SETTING_PREFIX . $setting['key'], $settings );
 
-		if ( isset( $setting['directions'] ) )
+		if ( isset( $setting['directions'] ) ) {
 			printf( '<p>%s</p>', $setting['directions'] );
+		}
 	}
 
 	/**
@@ -47,8 +51,9 @@ class RV_Settings_Inputs {
 
 		printf( '<p><input type="text" class="regular-text" id="%s" name="%s" value="%s" /></p>', AFTER_COMMENT_PROMPTS_SETTING_PREFIX . $setting['key'], AFTER_COMMENT_PROMPTS_SETTING_PREFIX_NO_UNDERSCORE . '[' . $setting['key'] . ']', esc_attr( $option[$setting['key']] ) );
 
-		if ( isset( $setting['directions'] ) )
+		if ( isset( $setting['directions'] ) ) {
 			printf( '<p>%s</p>', $setting['directions'] );
+		}
 	}
 
 	/**
@@ -59,15 +64,17 @@ class RV_Settings_Inputs {
 	 */
 	public function input_checkbox( $setting, $option ) {
 
-		if ( isset( $option[$setting['key']] ) )
+		if ( isset( $option[$setting['key']] ) ) {
 			$value = $option[$setting['key']];
-
-		else $value = '';
+		} else {
+			$value = '';
+		}
 
 		?><input type="checkbox" id="<?php echo AFTER_COMMENT_PROMPTS_SETTING_PREFIX . $setting['key']; ?>" name="<?php echo AFTER_COMMENT_PROMPTS_SETTING_PREFIX_NO_UNDERSCORE . '[' . $setting['key'] . ']'; ?>" value="1" <?php checked( intval( $value ), 1 ); ?> /><?php
 
-		if ( isset( $setting['directions'] ) )
+		if ( isset( $setting['directions'] ) ) {
 			printf( '<p>%s</p>', $setting['directions'] );
+		}
 	}
 
 

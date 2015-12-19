@@ -7,7 +7,7 @@
  * Author: Ren Ventura
  * Author URI: http://www.engagewp.com/
  *
- * Text Domain: after_comments_prompt
+ * Text Domain: after-comments-prompt
  *
  * License: GPL 2.0+
  * License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -42,16 +42,25 @@ if ( ! class_exists( 'After_Comment_Prompts' ) ) :
 
 class After_Comment_Prompts {
 
-	private $set_user, $settings, $customizer;
+	private static $instance;
 
-	public function __construct() {
+	public $settings, $customizer;
 
-		$this->constants();
-		$this->includes();
-		$this->hooks();
+	public static function instance() {
 
-		$this->settings = new After_Comment_Prompts_Settings;
-		$this->customizer = new After_Comment_Prompts_Customizer_Settings;
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof After_Comment_Prompts ) ) {
+			
+			self::$instance = new After_Comment_Prompts;
+
+			self::$instance->constants();
+			self::$instance->includes();
+			self::$instance->hooks();
+
+			self::$instance->settings = new After_Comment_Prompts_Settings;
+			self::$instance->customizer = new After_Comment_Prompts_Customizer_Settings;
+		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -59,17 +68,21 @@ class After_Comment_Prompts {
 	 */
 	public function constants() {
 
-		if ( ! defined( 'AFTER_COMMENT_PROMPTS_PLUGIN_DIR' ) )
+		if ( ! defined( 'AFTER_COMMENT_PROMPTS_PLUGIN_DIR' ) ) {
 			define( 'AFTER_COMMENT_PROMPTS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		}
 
-		if ( ! defined( 'AFTER_COMMENT_PROMPTS_PLUGIN_URL' ) )
+		if ( ! defined( 'AFTER_COMMENT_PROMPTS_PLUGIN_URL' ) ) {
 			define( 'AFTER_COMMENT_PROMPTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		}
 
-		if ( ! defined( 'AFTER_COMMENT_PROMPTS_PLUGIN_FILE' ) )
+		if ( ! defined( 'AFTER_COMMENT_PROMPTS_PLUGIN_FILE' ) ) {
 			define( 'AFTER_COMMENT_PROMPTS_PLUGIN_FILE', __FILE__ );
+		}
 
-		if ( ! defined( 'AFTER_COMMENT_PROMPTS_VERSION' ) )
+		if ( ! defined( 'AFTER_COMMENT_PROMPTS_VERSION' ) ) {
 			define( 'AFTER_COMMENT_PROMPTS_VERSION', 1.0 );
+		}
 	}
 
 	/**
@@ -77,11 +90,21 @@ class After_Comment_Prompts {
 	 */
 	public function includes() {
 
-		foreach ( glob( AFTER_COMMENT_PROMPTS_PLUGIN_DIR . '/includes/*.php' ) as $file )
-			include_once $file;
+		$path = realpath( AFTER_COMMENT_PROMPTS_PLUGIN_DIR . '/includes' );
 
-		foreach ( glob( AFTER_COMMENT_PROMPTS_PLUGIN_DIR . '/includes/admin/*.php' ) as $file )
-			include_once $file;
+		$objects = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path ), RecursiveIteratorIterator::SELF_FIRST );
+
+		foreach ( $objects as $name => $object ) {
+
+			if ( is_file( $name ) ) {
+
+				if ( pathinfo( $name, PATHINFO_EXTENSION ) !== 'php' ) {
+					continue;
+				}
+
+				include_once $name;
+			}
+		}
 	}
 
 	/**
@@ -102,7 +125,9 @@ class After_Comment_Prompts {
 	public function enqueues() {
 
 		// Bail if the functionality is not enabled
-		if ( ! after_comment_prompts_is_enabled() ) return;
+		if ( ! after_comment_prompts_is_enabled() ) {
+			return;
+		}
 
 		wp_enqueue_style( 'popup-overlay-style', AFTER_COMMENT_PROMPTS_PLUGIN_URL . 'assets/css/style.min.css', '', AFTER_COMMENT_PROMPTS_VERSION );
 		wp_enqueue_script( 'popup-overlay-script', AFTER_COMMENT_PROMPTS_PLUGIN_URL . 'assets/js/popup-overlay.min.js', array( 'jquery' ), AFTER_COMMENT_PROMPTS_VERSION, true );
@@ -115,16 +140,26 @@ class After_Comment_Prompts {
 	public function add_prompt_content() {
 
 		// Bail if the functionality is not enabled
-		if ( ! after_comment_prompts_is_enabled() ) return;
+		if ( ! after_comment_prompts_is_enabled() ) {
+			return;
+		}
 
 		// Bail if comment_added query arg is not set or is something other than a number
-		if ( ! isset( $_GET['comment_added'] ) || ! is_numeric( $_GET['comment_added'] ) ) return;
+		if ( ! isset( $_GET['comment_added'] ) || ! is_numeric( $_GET['comment_added'] ) ) {
+			return;
+		}
 
 		// Bail if the modal is disable for logged-in users
-		if ( after_comment_prompts_is_hidden_for_logged_in() && is_user_logged_in() ) return;
+		if ( after_comment_prompts_is_hidden_for_logged_in() && is_user_logged_in() ) {
+			return;
+		}
 
 		// Comment object
 		$comment = get_comment( $_GET['comment_added'] );
+
+		if ( ! $comment ) {
+			return;
+		}
 
 		// Commenter's first name
 		$author_names = explode( ' ', $comment->comment_author );
@@ -170,7 +205,7 @@ endif;
  *	@return object After_Comment_Prompts instance
  */
 function After_Comment_Prompts() {
-	return new After_Comment_Prompts;
+	return After_Comment_Prompts::instance();
 }
 
 //* Start the engine

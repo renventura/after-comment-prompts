@@ -1,7 +1,9 @@
 <?php
-
 /**
  *	Add new settings fields to the options-general.php page
+ *
+ *	@package After Comment Prompts
+ *	@author Ren Ventura
  */
 
 if ( ! class_exists( 'After_Comment_Prompts_Settings' ) ) :
@@ -12,13 +14,13 @@ class After_Comment_Prompts_Settings {
 
 	public function __construct() {
 
+		$this->constants();
+
 		require_once 'class-rv-settings-inputs.php';
 
 		$this->inputs = new RV_Settings_Inputs;
 
 		add_action( 'admin_init' , array( $this , 'register_fields' ) );
-
-		$this->constants();
 	}
 
 	/**
@@ -26,14 +28,17 @@ class After_Comment_Prompts_Settings {
 	 */
 	public function constants() {
 
-		if ( ! defined( 'AFTER_COMMENT_PROMPTS_SETTING_PREFIX' ) )
+		if ( ! defined( 'AFTER_COMMENT_PROMPTS_SETTING_PREFIX' ) ) {
 			define( 'AFTER_COMMENT_PROMPTS_SETTING_PREFIX', 'after_comment_prompts_' );
+		}
 
-		if ( ! defined( 'AFTER_COMMENT_PROMPTS_SETTING_PREFIX_NO_UNDERSCORE' ) )
+		if ( ! defined( 'AFTER_COMMENT_PROMPTS_SETTING_PREFIX_NO_UNDERSCORE' ) ) {
 			define( 'AFTER_COMMENT_PROMPTS_SETTING_PREFIX_NO_UNDERSCORE', 'after_comment_prompts' );
+		}
 
-		if ( ! defined( 'AFTER_COMMENT_PROMPTS_SETTING_SECTION_NAME' ) )
+		if ( ! defined( 'AFTER_COMMENT_PROMPTS_SETTING_SECTION_NAME' ) ) {
 			define( 'AFTER_COMMENT_PROMPTS_SETTING_SECTION_NAME', 'after-comment-prompts-settings-section' );
+		}
 	}
 
 	/**
@@ -47,12 +52,15 @@ class After_Comment_Prompts_Settings {
 		$merge_tags = array(
 			'{commenter_name}' => __( 'The name of the comment author;' ),
 		);
-		$message_directions = sprintf( __( 'The following merge tags can be used in your message:' ) );
-		$message_directions .= '<ul>';
-		foreach ( $merge_tags as $key => $val ) {
 
+		$message_directions = sprintf( __( 'The following merge tags can be used in your message:' ) );
+		
+		$message_directions .= '<ul>';
+		
+		foreach ( $merge_tags as $key => $val ) {
 			$message_directions .= sprintf( '<li><strong>%s</strong> - %s</li>', $key, $val );
 		}
+		
 		$message_directions .= '</ul>';
 
 		//* Plugin options/settings
@@ -143,7 +151,6 @@ class After_Comment_Prompts_Settings {
 	 *	@param array $setting Data passed from add_settings_field()
 	 */
 	public function render_setting_input( $setting ) {
-
 		call_user_func( array( $this->inputs, 'input_' . $setting['type'] ), $setting, $this->option );
 	}
 

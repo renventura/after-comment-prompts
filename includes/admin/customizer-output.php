@@ -1,4 +1,10 @@
 <?php
+/**
+ *	Ouput the styles set in the Customizer
+ *
+ *	@package After Comment Prompts
+ *	@author Ren Ventura
+ */
 
 /**
  *	Generate modal styling based on customizer settings

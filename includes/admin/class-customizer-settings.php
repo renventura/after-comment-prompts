@@ -1,7 +1,9 @@
 <?php
-
 /**
  *	Add style settings to the WordPress Customizer
+ *
+ *	@package After Comment Prompts
+ *	@author Ren Ventura
  */
 
 if ( ! class_exists( 'After_Comment_Prompts_Customizer_Settings' ) ):
@@ -9,7 +11,6 @@ if ( ! class_exists( 'After_Comment_Prompts_Customizer_Settings' ) ):
 class After_Comment_Prompts_Customizer_Settings {
 
 	public function __construct() {
-
 		add_action( 'customize_register', array( $this, 'register_customizer_fields' ) );
 	}
 
@@ -21,6 +22,7 @@ class After_Comment_Prompts_Customizer_Settings {
 	public function customizer_settings() {
 
 		$settings = array(
+
 			'panels' => array(
 
 				// Panels
@@ -112,8 +114,9 @@ class After_Comment_Prompts_Customizer_Settings {
 
 			foreach ( $panel['sections'] as $section ) {
 
-				if ( ! isset( $section_priority ) )
+				if ( ! isset( $section_priority ) ) {
 					$section_priority = $section['priority'];
+				}
 
 				$wp_customize->add_section( $section['key'], array(
 					'title' => $section['title'],
@@ -124,8 +127,9 @@ class After_Comment_Prompts_Customizer_Settings {
 
 				foreach ( $section['fields'] as $field ) {
 
-					if ( ! isset( $field_priority ) )
+					if ( ! isset( $field_priority ) ) {
 						$field_priority = 1;
+					}
 
 					switch ( $field['type'] ) {
 
@@ -175,8 +179,9 @@ class After_Comment_Prompts_Customizer_Settings {
 
 		$new_input = sanitize_text_field( $input );
 
-		if ( is_numeric( $new_input ) )
+		if ( is_numeric( $new_input ) ) {
 			return $new_input;
+		}
 
 		return 1;
 	}

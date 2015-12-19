@@ -1,7 +1,9 @@
 <?php
-
 /**
  *	Helper functions
+ *
+ *	@package After Comment Prompts
+ *	@author Ren Ventura
  */
 
 /**
@@ -23,8 +25,9 @@ function after_comment_prompts_is_enabled() {
 
 	$option = after_comment_prompts_get_settings();
 
-	if ( isset( $option['enable'] ) && $option['enable'] == 1 )
+	if ( isset( $option['enable'] ) && $option['enable'] == 1 ) {
 		return true;
+	}
 
 	return false;
 }
@@ -38,8 +41,9 @@ function after_comment_prompts_is_hidden_for_logged_in() {
 
 	$option = after_comment_prompts_get_settings();
 
-	if ( isset( $option['hide_for_logged_on'] ) && $option['hide_for_logged_on'] == 1 )
+	if ( isset( $option['hide_for_logged_on'] ) && $option['hide_for_logged_on'] == 1 ) {
 		return true;
+	}
 
 	return false;
 }

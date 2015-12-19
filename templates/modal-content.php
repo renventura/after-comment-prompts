@@ -1,7 +1,9 @@
 <?php 
-	
 /**
  *	Default HTML markup for modals
+ *
+ *	@package After Comment Prompts
+ *	@author Ren Ventura
  */
 
 ?>
