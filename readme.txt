@@ -1,39 +1,38 @@
-=== Comment Prompt ===
+=== After Comment Prompts ===
 
 Contributors: EngageWP
-Tags: Login
-Tested up to: 4.2.3
+Tags: comments, social, follows, modal, prompts
+Tested up to: 4.4
 Stable tag: 1.0
 License: GPL 2.0+
 License URI: http://www.opensource.org/licenses/gpl-license.php
-Donate link: http://www.engagewp.com/donate/
 
 Display a modal message/prompt to a user after they leave a post comment.
 
 == Description ==
-
+Display a modal prompt after a user successfully posts a comment. Great for calls to action like social follows, product views, etc.
 
 == Installation ==
 
-= Install Automatically =
+= Automatically =
 
-1. Search for Comment Prompt in the Add New Plugin section of the WordPress admin
-2. Install & Activate
+1. Search for After Comment Prompts in the Add New Plugin section of the WordPress admin.
+2. Install and activate.
 
-= Install Manually =
+= Manually =
 
-1. Download the zip file, unzip it and upload plugin folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-
-== Frequently Asked Questions ==
-
-<em>How do I use this plugin?</em>
-
-
+1. Download the zip file, decompress the file and upload the main plugin folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin.
 
 == Screenshots ==
 
-None yet
+1. "Delete My Account" button is shown on the edit-profile page, and can be displayed on the front-end via a shortcode.
+
+2. Confirm account deletion prompt.
+
+3. Processing account deletion.
+
+4. Account deleted successfully. 
 
 == Changelog ==
 

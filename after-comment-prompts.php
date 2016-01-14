@@ -7,7 +7,7 @@
  * Author: Ren Ventura
  * Author URI: http://www.engagewp.com/
  *
- * Text Domain: after-comments-prompt
+ * Text Domain: after-comment-prompts
  *
  * License: GPL 2.0+
  * License URI: http://www.opensource.org/licenses/gpl-license.php

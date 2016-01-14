@@ -1,4 +1,4 @@
-# Comment Prompt
+# After Comment Prompts
 
 Display a modal message/prompt to a user after they leave a post comment.
 
@@ -6,7 +6,7 @@ Display a modal message/prompt to a user after they leave a post comment.
 
 __Automatically__
 
-1. Search for Comment Prompt in the Add New Plugin section of the WordPress admin
+1. Search for After Comment Prompts in the Add New Plugin section of the WordPress admin
 2. Install & Activate
 
 __Manually__

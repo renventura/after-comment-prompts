@@ -50,10 +50,10 @@ class After_Comment_Prompts_Settings {
 
 		// Directions for the message setting
 		$merge_tags = array(
-			'{commenter_name}' => __( 'The name of the comment author;' ),
+			'{commenter_name}' => __( 'The name of the comment author;', 'after-comment-prompts' ),
 		);
 
-		$message_directions = sprintf( __( 'The following merge tags can be used in your message:' ) );
+		$message_directions = sprintf( __( 'The following merge tags can be used in your message:', 'after-comment-prompts' ) );
 		
 		$message_directions .= '<ul>';
 		
@@ -67,25 +67,25 @@ class After_Comment_Prompts_Settings {
 		$settings = array(
 			array(
 				'key' => 'enable',
-				'title' => 'Enable Prompts',
+				'title' => __( 'Enable Prompts', 'after-comment-prompts' ),
 				'type' => 'checkbox'
 			),
 			array(
 				'key' => 'hide_for_logged_on',
-				'title' => 'Hide for logged in users?',
+				'title' => __( 'Hide for logged in users?', 'after-comment-prompts' ),
 				'type' => 'checkbox'
 			),
 			array(
 				'key' => 'message',
-				'title' => 'Prompt Message',
+				'title' => __( 'Prompt Message', 'after-comment-prompts' ),
 				'type' => 'html',
 				'directions' => $message_directions
 			),
 			array(
 				'key' => 'customize_link',
-				'title' => 'Customize Design',
+				'title' => 'Customize Design', 'after-comment-prompts',
 				'type' => 'text_link',
-				'directions' => __( 'Customize modal design' )
+				'directions' => __( 'Customize modal design', 'after-comment-prompts' )
 			),
 		);
 
@@ -142,7 +142,7 @@ class After_Comment_Prompts_Settings {
 	 */
 	public function settings_section_callback() {
 
-		printf( '<p>%s</p>', __( 'Create a modal prompt to display after a user comments on a post.' ) );
+		printf( '<p>%s</p>', __( 'Create a modal prompt to display after a user comments on a post.', 'after-comment-prompts' ) );
 	}
 
 	/**

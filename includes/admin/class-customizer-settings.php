@@ -31,29 +31,29 @@ class After_Comment_Prompts_Customizer_Settings {
 					'priority' => 99,
 					'capability' => 'edit_theme_options',
 					'theme_supports' => '',
-					'title' => __( 'After Comments Prompt Modal', 'after_comments_prompt' ),
-					'description' => __( 'Style the modal prompt users see after commenting on posts.', 'after_comments_prompt' ),
+					'title' => __( 'After Comments Prompt Modal', 'after-comment-prompts' ),
+					'description' => __( 'Style the modal prompt users see after commenting on posts.', 'after-comment-prompts' ),
 					'sections' => array(
 
 						// Panel Sections
 						array(
 							'key' => 'after_comments_prompt_overlay_section',
 							'priority' => 1,
-							'title' => __( 'Overlay Settings', 'after_comments_prompt' ),
-							'description' => __( 'Overlay color settings.', 'after_comments_prompt' ),
+							'title' => __( 'Overlay Settings', 'after-comment-prompts' ),
+							'description' => __( 'Overlay color settings.', 'after-comment-prompts' ),
 							'fields' => array(
 
 								// Fields
 								array(
 									'type' => 'color',
 									'key' => 'acp_customizer_modal_overlay_color',
-									'label' => __( 'Overlay Color', 'after_comments_prompt' ),
+									'label' => __( 'Overlay Color', 'after-comment-prompts' ),
 									'default' => '#000000',
 								),
 								array(
 									'type' => 'number',
 									'key' => 'acp_customizer_modal_overlay_opacity',
-									'label' => __( 'Overlay Opacity', 'after_comments_prompt' ),
+									'label' => __( 'Overlay Opacity', 'after-comment-prompts' ),
 									'default' => '0.5',
 								),
 							),
@@ -61,27 +61,27 @@ class After_Comment_Prompts_Customizer_Settings {
 						array(
 							'key' => 'after_comments_prompt_modal_section',
 							'priority' => 2,
-							'title' => __( 'Modal Settings', 'after_comments_prompt' ),
-							'description' => __( 'Modal color settings.', 'after_comments_prompt' ),
+							'title' => __( 'Modal Settings', 'after-comment-prompts' ),
+							'description' => __( 'Modal color settings.', 'after-comment-prompts' ),
 							'fields' => array(
 
 								// Fields
 								array(
 									'type' => 'color',
 									'key' => 'acp_customizer_modal_background_color',
-									'label' => __( 'Modal Background', 'after_comments_prompt' ),
+									'label' => __( 'Modal Background', 'after-comment-prompts' ),
 									'default' => '#ffffff',
 								),
 								array(
 									'type' => 'color',
 									'key' => 'acp_customizer_modal_close_color',
-									'label' => __( 'Close Button Color', 'after_comments_prompt' ),
+									'label' => __( 'Close Button Color', 'after-comment-prompts' ),
 									'default' => '#DF0101',
 								),
 								array(
 									'type' => 'number',
 									'key' => 'acp_customizer_modal_width',
-									'label' => __( 'Modal Width (pixels)', 'after_comments_prompt' ),
+									'label' => __( 'Modal Width (pixels)', 'after-comment-prompts' ),
 									'default' => '400',
 								),
 							),
