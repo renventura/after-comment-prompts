@@ -26,13 +26,9 @@ Display a modal prompt after a user successfully posts a comment. Great for call
 
 == Screenshots ==
 
-1. "Delete My Account" button is shown on the edit-profile page, and can be displayed on the front-end via a shortcode.
+1. Admin settings.
 
-2. Confirm account deletion prompt.
-
-3. Processing account deletion.
-
-4. Account deleted successfully. 
+2. Front-end modal prompt after a comment is submitted.
 
 == Changelog ==
 
