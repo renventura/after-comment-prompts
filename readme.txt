@@ -1,8 +1,8 @@
 === After Comment Prompts ===
 
-Contributors: EngageWP
+Contributors: renventura
 Tags: comments, social, follows, modal, prompts
-Tested up to: 4.4
+Tested up to: 5.0
 Stable tag: 1.0
 License: GPL 2.0+
 License URI: http://www.opensource.org/licenses/gpl-license.php

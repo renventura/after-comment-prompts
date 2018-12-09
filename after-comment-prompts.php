@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: After Comment Prompts
- * Plugin URI: http://www.engagewp.com/
+ * Plugin URI: https://renventura.com
  * Description: Display a modal prompt after a user succesfully posts a comment. Great for calls to action like social follows, product views, etc.
  * Version: 1.0
  * Author: Ren Ventura
- * Author URI: http://www.engagewp.com/
+ * Author URI: https://renventura.com
  *
  * Text Domain: after-comment-prompts
  *
@@ -14,7 +14,7 @@
  */
 
  /*
-	Copyright 2015  Ren Ventura, EngageWP.com
+	Copyright 2015  Ren Ventura <renventura.com>
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
